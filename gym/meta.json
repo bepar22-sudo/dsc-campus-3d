@@ -1,0 +1,1 @@
+{"origin": [158630.36723033577, 370423.122710353, 80.2645229557906], "center": [-30, -10, -2], "extent": [136, 122], "crs": "EPSG:5187 (동부원점)", "mesh": {"name": "mesh", "bytes": 936236, "urls": ["gym_mesh_0.bin"]}, "splat": {"name": "splat", "bytes": 27015587, "urls": ["gym_splat_0.bin", "gym_splat_1.bin"], "count": 1576614}}
