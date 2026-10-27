@@ -233,7 +233,7 @@ $('lz0').textContent=`EL. ${OZ.toFixed(0)}`; $('lz1').textContent=`${(OZ+EZ).toF
 // ---------- renderer ----------
 const stage=$('stage');
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const TOUCH=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||navigator.maxTouchPoints>0&&innerWidth<1024;renderer.setPixelRatio(Math.min(devicePixelRatio,TOUCH?1.5:2));
 renderer.outputEncoding=THREE.sRGBEncoding;
 stage.appendChild(renderer.domElement);
 const scene=new THREE.Scene();
@@ -241,7 +241,7 @@ scene.background=new THREE.Color(0x0b1013);
 scene.fog=new THREE.Fog(0x0b1013,700,1600);
 const camera=new THREE.PerspectiveCamera(45,1,0.5,4000);
 const controls=new THREE.OrbitControls(camera,renderer.domElement);
-controls.enableDamping=true; controls.dampingFactor=0.08; controls.maxPolarAngle=Math.PI*0.495; controls.screenSpacePanning=false;
+controls.enableDamping=!TOUCH; controls.dampingFactor=0.08; controls.maxPolarAngle=Math.PI*0.495; controls.screenSpacePanning=false;
 const home=()=>{camera.position.set(-210,260,300);controls.target.set(0,EZ*0.25,0);controls.update();};
 home();
 scene.add(new THREE.HemisphereLight(0xdfeaf0,0x2a2318,0.75));
